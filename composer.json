@@ -1,0 +1,22 @@
+{
+  "name": "aovol/webman-resource",
+  "description": "API Resource for Webman Framework",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "webman-resource",
+      "email": "vivabest@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.0",
+    "workerman/webman-framework": "^2.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "WebmanResource\\": "src/"
+    }
+  },
+  "version": "1.0.0"
+}
