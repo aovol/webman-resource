@@ -48,7 +48,7 @@ class ResourceCollection extends JsonResource implements Countable, IteratorAggr
     {
         parent::__construct($resource);
 
-        $this->resource = $this->collectResource($resource);
+        $this->collection = $this->collectResource($resource);
     }
 
     /**
@@ -76,6 +76,16 @@ class ResourceCollection extends JsonResource implements Countable, IteratorAggr
         $this->queryParameters = $query;
 
         return $this;
+    }
+
+    /**
+     * 获取迭代器
+     *
+     * @return \Traversable
+     */
+    public function getIterator(): \Traversable
+    {
+        return $this->collection->getIterator();
     }
 
     /**
