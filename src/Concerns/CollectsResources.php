@@ -2,7 +2,7 @@
 
 namespace WebmanResource\Concerns;
 
-use support\Collection;
+use Illuminate\Support\Collection;
 
 trait CollectsResources
 {
