@@ -15,15 +15,21 @@ trait CollectsResources
     protected function collectResource($resource)
     {
         if ($resource instanceof Collection) {
-            return $resource;
+            return $resource->map(function ($item) {
+                return new $this->collects($item);
+            });
         }
 
         if (is_array($resource)) {
-            $resource = new Collection($resource);
+            return (new Collection($resource))->map(function ($item) {
+                return new $this->collects($item);
+            });
         }
 
         if ($resource instanceof \support\Paginator) {
-            $resource = $resource->getCollection();
+            return $resource->getCollection()->map(function ($item) {
+                return new $this->collects($item);
+            });
         }
 
         return $resource->map(function ($item) {
