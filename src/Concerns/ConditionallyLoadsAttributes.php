@@ -20,8 +20,10 @@ trait ConditionallyLoadsAttributes
             if (is_array($value)) {
                 $data[$key] = $this->filter($value);
                 $index++;
-            } elseif (is_null($value) || (is_string($value) && empty($value))) {
-                unset($data[$key]);
+            } elseif (is_null($value)) {
+                // 保留 null 值，不删除字段
+                $data[$key] = null;
+                $index++;
             } else {
                 $data[$key] = $value;
                 $index++;
